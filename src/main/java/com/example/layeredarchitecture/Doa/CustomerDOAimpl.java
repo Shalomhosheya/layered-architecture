@@ -10,15 +10,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class CustomerDOAimpl {
-    public ArrayList<CustomerDTO>getAllcustomer () throws SQLException, ClassNotFoundException {
+    public ArrayList<CustomerDTO> getAllcustomer() throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getDbConnection().getConnection();
         Statement stm = connection.createStatement();
         ResultSet rst = stm.executeQuery("SELECT * FROM Customer");
-        ArrayList<CustomerDTO>getAllcustomer=new ArrayList<>();
+        ArrayList<CustomerDTO>  getAllcustomer = new ArrayList<>();
         while(rst.next()){
-            CustomerDTO customerDTO = new CustomerDTO(rst.getString("id"));
-            rst.getString("name"),rst.getString("address"));
+            CustomerDTO customerDTO = new CustomerDTO(rst.getString("id"),rst.getString("name"),rst.getString("address"));
             getAllcustomer.add(customerDTO);
         }
+        return getAllcustomer;
     }
 }
